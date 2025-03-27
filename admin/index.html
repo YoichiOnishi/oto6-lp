@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音六AI - 管理画面</title>
+    
+    <!-- フォント -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body>
+    <!-- ログイン画面 (最初は表示、認証後は非表示) -->
+    <div class="login-container" id="login-container">
+        <div class="login-card">
+            <div class="login-logo"><img src="../assets/images/logo.png" alt="音六AI" width="150" height="auto"></div>
+            <h1 class="login-title">管理画面にログイン</h1>
+            
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email" class="form-label">メールアドレス</label>
+                    <input type="email" id="email" class="form-input" placeholder="admin@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password" class="form-label">パスワード</label>
+                    <input type="password" id="password" class="form-input" placeholder="••••••" required>
+                </div>
+                
+                <button type="submit" class="login-btn">ログイン</button>
+            </form>
+            
+            <div class="login-footer">
+                音六AI 管理システム © 2025
+            </div>
+        </div>
+    </div>
+    
+    <!-- 管理画面 (認証後に表示) -->
+    <div class="admin-container" id="admin-container" style="display: none;">
+        <!-- サイドバートグルボタン (モバイル用) -->
+        <button class="sidebar-toggle" id="sidebar-toggle">☰</button>
+        
+        <!-- サイドバー -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="../assets/images/logo.png" alt="音六AI" width="120" height="auto">
+                </div>
+            </div>
+            
+            <div class="sidebar-nav">
+                <div class="nav-group">
+                    <div class="nav-title">LP編集</div>
+                    <a href="#hero" class="nav-item active" data-section="hero">
+                        <span class="nav-icon">🏠</span>
+                        ヒーローセクション
+                    </a>
+                    <a href="#features" class="nav-item" data-section="features">
+                        <span class="nav-icon">✨</span>
+                        特徴セクション
+                    </a>
+                    <a href="#benefits" class="nav-item" data-section="benefits">
+                        <span class="nav-icon">📈</span>
+                        導入効果セクション
+                    </a>
+                    <a href="#cases" class="nav-item" data-section="cases">
+                        <span class="nav-icon">🏢</span>
+                        導入事例セクション
+                    </a>
+                    <a href="#demo" class="nav-item" data-section="demo">
+                        <span class="nav-icon">🎮</span>
+                        デモセクション
+                    </a>
+                    <a href="#faq" class="nav-item" data-section="faq">
+                        <span class="nav-icon">❓</span>
+                        FAQセクション
+                    </a>
+                    <a href="#contact" class="nav-item" data-section="contact">
+                        <span class="nav-icon">✉️</span>
+                        お問い合わせセクション
+                    </a>
+                    <a href="#footer" class="nav-item" data-section="footer">
+                        <span class="nav-icon">🔗</span>
+                        フッターセクション
+                    </a>
+                </div>
+                
+                <div class="nav-group">
+                    <div class="nav-title">設定</div>
+                    <a href="#general" class="nav-item" data-section="general">
+                        <span class="nav-icon">⚙️</span>
+                        一般設定
+                    </a>
+                    <a href="#seo" class="nav-item" data-section="seo">
+                        <span class="nav-icon">🔍</span>
+                        SEO設定
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- メインコンテンツ -->
+        <div class="main-content" id="main-content">
+            <!-- ヘッダー -->
+            <div class="header">
+                <h1 class="page-title" id="page-title">ヒーローセクション</h1>
+                
+                <div class="header-actions">
+                    <a href="../index.html" class="btn btn-outline" target="_blank" id="view-site-btn">
+                        <span class="btn-icon">👁️</span>
+                        サイトを表示
+                    </a>
+                    
+                    <button class="btn btn-primary" id="save-changes-btn">
+                        <span class="btn-icon">💾</span>
+                        変更を保存
+                    </button>
+                    
+                    <div class="user-dropdown" id="user-dropdown">
+                        <div class="user-info">
+                            <div class="user-avatar">A</div>
+                            <div class="user-name">管理者</div>
+                        </div>
+                        <div class="dropdown-menu" id="dropdown-menu">
+                            <a href="#profile" class="dropdown-item">プロフィール</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item" id="logout-btn">ログアウト</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- プレビューボタン (固定) -->
+            <a href="../index.html" class="preview-btn" id="preview-btn" title="プレビュー" target="_blank">👁️</a>
+            
+            <!-- ページコンテンツ -->
+            <div class="content">
+                <!-- ヒーローセクション編集 -->
+                <div class="section-content active" id="hero-section">
+                    <div class="content-section">
+                        <div class="section-header">
+                            <h2 class="section-title">ヒーローセクション</h2>
+                            <div class="section-actions">
+                                <button class="btn btn-success" id="hero-save-btn">
+                                    <span class="btn-icon">💾</span>
+                                    保存
+                                </button>
+                            </div>
+                        </div>
+                        <div class="section-body">
+                            <!-- 成功メッセージ (初期状態では非表示) -->
+                            <div class="alert alert-success" id="hero-success-message" style="display: none;">
+                                <span class="alert-icon">✓</span>
+                                <div class="alert-content">
+                                    <div class="alert-title">保存しました</div>
+                                    <p>ヒーローセクションの変更が保存されました。</p>
+                                </div>
+                                <button class="alert-dismiss" onclick="this.parentElement.style.display='none'">×</button>
+                            </div>
+                            
+                            <form class="edit-form" id="hero-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="hero-title" class="form-label">見出し</label>
+                                        <input type="text" id="hero-title" class="form-input" value="AIの力でナレーション制作を革新する" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="hero-subtitle" class="form-label">サブタイトル</label>
+                                        <textarea id="hero-subtitle" class="form-input" required>音六AIは、TBSグループが開発した高品質な音声合成システムです。音声尺にフィットしたナレーション作成、読み・イントネーション調整、多言語対応で、映像制作のワークフローを効率化します。</textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row inline">
+                                    <div class="form-group">
+                                        <label for="hero-cta-primary" class="form-label">メインCTAボタンテキスト</label>
+                                        <input type="text" id="hero-cta-primary" class="form-input" value="資料請求・お問い合わせ" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="hero-cta-secondary" class="form-label">サブCTAボタンテキスト</label>
+                                        <input type="text" id="hero-cta-secondary" class="form-input" value="詳しく見る" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="hero-image" class="form-label">ヒーロー画像</label>
+                                        <div class="file-input-wrapper">
+                                            <button class="btn btn-outline">
+                                                <span class="btn-icon">📁</span>
+                                                画像をアップロード
+                                            </button>
+                                            <input type="file" id="hero-image" accept="image/*">
+                                        </div>
+                                        
+                                        <div class="image-preview">
+                                            <img src="../assets/images/hero-image.png" alt="ヒーロー画像プレビュー">
+                                            <div class="image-actions">
+                                                <button class="image-action-btn">🔄</button>
+                                                <button class="image-action-btn danger">🗑️</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 特徴セクション編集 -->
+                <div class="section-content" id="features-section">
+                    <div class="content-section">
+                        <div class="section-header">
+                            <h2 class="section-title">特徴セクション</h2>
+                            <div class="section-actions">
+                                <button class="btn btn-success" id="features-save-btn">
+                                    <span class="btn-icon">💾</span>
+                                    保存
+                                </button>
+                            </div>
+                        </div>
+                        <div class="section-body">
+                            <!-- 成功メッセージ (初期状態では非表示) -->
+                            <div class="alert alert-success" id="features-success-message" style="display: none;">
+                                <span class="alert-icon">✓</span>
+                                <div class="alert-content">
+                                    <div class="alert-title">保存しました</div>
+                                    <p>特徴セクションの変更が保存されました。</p>
+                                </div>
+                                <button class="alert-dismiss" onclick="this.parentElement.style.display='none'">×</button>
+                            </div>
+                            
+                            <form class="edit-form" id="features-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="features-title" class="form-label">セクション見出し</label>
+                                        <input type="text" id="features-title" class="form-input" value="音六AIの特徴" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="features-subtitle" class="form-label">セクションサブタイトル</label>
+                                        <textarea id="features-subtitle" class="form-input" required>プロフェッショナルなナレーション制作を可能にする高度な機能</textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="tabs">
+                                    <div class="tab-item active" data-tab="feature-1">特徴 1</div>
+                                    <div class="tab-item" data-tab="feature-2">特徴 2</div>
+                                    <div class="tab-item" data-tab="feature-3">特徴 3</div>
+                                    <button class="tab-item add-tab" id="add-feature-btn" type="button">
+                                        <span class="btn-icon">+</span> 追加
+                                    </button>
+                                </div>
+                                
+                                <div class="tab-content active" id="feature-1-content">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="feature-1-title" class="form-label">特徴タイトル</label>
+                                            <input type="text" id="feature-1-title" class="form-input" value="音声尺にフィットしたナレーション" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="feature-1-icon" class="form-label">アイコン (絵文字)</label>
+                                            <input type="text" id="feature-1-icon" class="form-input" value="📏" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="feature-1-description" class="form-label">説明文</label>
+                                            <textarea id="feature-1-description" class="form-input" required>指定した時間枠にぴったり収まる音声を生成。テロップに合わせたナレーションや、限られた時間内での情報伝達に最適です。</textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-actions">
+                                            <button type="button" class="btn btn-danger" data-action="delete-feature" data-id="1">
+                                                <span class="btn-icon">🗑️</span> この特徴を削除
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="tab-content" id="feature-2-content">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="feature-2-title" class="form-label">特徴タイトル</label>
+                                            <input type="text" id="feature-2-title" class="form-input" value="読み・イントネーション指定機能" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="feature-2-icon" class="form-label">アイコン (絵文字)</label>
+                                            <input type="text" id="feature-2-icon" class="form-input" value="🗣️" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="feature-2-description" class="form-label">説明文</label>
+                                            <textarea id="feature-2-description" class="form-input" required>難読語や専門用語も、正確な読み方とイントネーションを指定可能。自然で聞き取りやすい音声を実現します。</textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-actions">
+                                            <button type="button" class="btn btn-danger" data-action="delete-feature" data-id="2">
+                                                <span class="btn-icon">🗑️</span> この特徴を削除
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="tab-content" id="feature-3-content">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="feature-3-title" class="form-label">特徴タイトル</label>
+                                            <input type="text" id="feature-3-title" class="form-input" value="多言語ナレーション対応" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="feature-3-icon" class="form-label">アイコン (絵文字)</label>
+                                            <input type="text" id="feature-3-icon" class="form-input" value="🌐" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="feature-3-description" class="form-label">説明文</label>
+                                            <textarea id="feature-3-description" class="form-input" required>日本語だけでなく、英語、中国語、韓国語など、複数の言語に対応。国際的なコンテンツ制作をサポートします。</textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-actions">
+                                            <button type="button" class="btn btn-danger" data-action="delete-feature" data-id="3">
+                                                <span class="btn-icon">🗑️</span> この特徴を削除
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 導入効果セクション編集 -->
+                <div class="section-content" id="benefits-section">
+                    <div class="content-section">
+                        <div class="section-header">
+                            <h2 class="section-title">導入効果セクション</h2>
+                            <div class="section-actions">
+                                <button class="btn btn-success" id="benefits-save-btn">
+                                    <span class="btn-icon">💾</span>
+                                    保存
+                                </button>
+                            </div>
+                        </div>
+                        <div class="section-body">
+                            <!-- 成功メッセージ (初期状態では非表示) -->
+                            <div class="alert alert-success" id="benefits-success-message" style="display: none;">
+                                <span class="alert-icon">✓</span>
+                                <div class="alert-content">
+                                    <div class="alert-title">保存しました</div>
+                                    <p>導入効果セクションの変更が保存されました。</p>
+                                </div>
+                                <button class="alert-dismiss" onclick="this.parentElement.style.display='none'">×</button>
+                            </div>
+                            
+                            <form class="edit-form" id="benefits-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="benefits-title" class="form-label">セクション見出し</label>
+                                        <input type="text" id="benefits-title" class="form-input" value="導入効果" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="benefits-subtitle" class="form-label">セクションサブタイトル</label>
+                                        <textarea id="benefits-subtitle" class="form-input" required>音六AIがもたらす具体的なメリット</textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="tabs">
+                                    <div class="tab-item active" data-tab="benefit-1">効果 1</div>
+                                    <div class="tab-item" data-tab="benefit-2">効果 2</div>
+                                    <button class="tab-item add-tab" id="add-benefit-btn" type="button">
+                                        <span class="btn-icon">+</span> 追加
+                                    </button>
+                                </div>
+                                
+                                <div class="tab-content active" id="benefit-1-content">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="benefit-1-title" class="form-label">効果タイトル</label>
+                                            <input type="text" id="benefit-1-title" class="form-input" value="作業時間の大幅削減" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="benefit-1-icon" class="form-label">アイコン (絵文字)</label>
+                                            <input type="text" id="benefit-1-icon" class="form-input" value="⏱️" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="benefit-1-description" class="form-label">説明文</label>
+                                            <textarea id="benefit-1-description" class="form-input" required>従来20分かかっていたナレーション録音作業が、わずか1分で完了。スピード感のある制作ワークフローを実現します。</textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row inline">
+                                        <div class="form-group">
+                                            <label for="benefit-1-before" class="form-label">導入前</label>
+                                            <input type="text" id="benefit-1-before" class="form-input" value="20分" required>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="benefit-1-after" class="form-label">導入後</label>
+                                            <input type="text" id="benefit-1-after" class="form-input" value="1分" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-actions">
+                                            <button type="button" class="btn btn-danger" data-action="delete-benefit" data-id="1">
+                                                <span class="btn-icon">🗑️</span> この効果を削除
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="tab-content" id="benefit-2-content">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="benefit-2-title" class="form-label">効果タイトル</label>
+                                            <input type="text" id="benefit-2-title" class="form-input" value="コスト削減効果" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="benefit-2-icon" class="form-label">アイコン (絵文字)</label>
+                                            <input type="text" id="benefit-2-icon" class="form-input" value="💰" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="benefit-2-description" class="form-label">説明文</label>
+                                            <textarea id="benefit-2-description" class="form-input" required>8分の映像制作にかかるナレーションコストを数千円から数十円に削減。制作予算の効率的な配分が可能になります。</textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row inline">
+                                        <div class="form-group">
+                                            <label for="benefit-2-before" class="form-label">導入前</label>
+                                            <input type="text" id="benefit-2-before" class="form-input" value="数千円" required>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="benefit-2-after" class="form-label">導入後</label>
+                                            <input type="text" id="benefit-2-after" class="form-input" value="数十円" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-actions">
+                                            <button type="button" class="btn btn-danger" data-action="delete-benefit" data-id="2">
+                                                <span class="btn-icon">🗑️</span> この効果を削除
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 導入事例セクション編集 -->
+                <div class="section-content" id="cases-section">
+                    <div class="content-section">
+                        <div class="section-header">
+                            <h2 class="section-title">導入事例セクション</h2>
+                            <div class="section-actions">
+                                <button class="btn btn-primary" id="add-case-btn">
+                                    <span class="btn-icon">+</span>
+                                    事例を追加
+                                </button>
+                                <button class="btn btn-success" id="cases-save-btn">
+                                    <span class="btn-icon">💾</span>
+                                    保存
+                                </button>
+                            </div>
+                        </div>
+                        <div class="section-body">
+                            <!-- 成功メッセージ (初期状態では非表示) -->
+                            <div class="alert alert-success" id="cases-success-message" style="display: none;">
+                                <span class="alert-icon">✓</span>
+                                <div class="alert-content">
+                                    <div class="alert-title">保存しました</div>
+                                    <p>導入事例セクションの変更が保存されました。</p>
+                                </div>
+                                <button class="alert-dismiss" onclick="this.parentElement.style.display='none'">×</button>
+                            </div>
+                            
+                            <form class="edit-form" id="cases-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="cases-title" class="form-label">セクション見出し</label>
+                                        <input type="text" id="cases-title" class="form-input" value="導入事例" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="cases-subtitle" class="form-label">セクションサブタイトル</label>
+                                        <textarea id="cases-subtitle" class="form-input" required>多くの放送局で活用されています</textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="case-container">
+                                    <div class="case-item" data-case-id="1">
+                                        <div class="case-header">
+                                            <h3>事例 #1</h3>
+                                            <div class="case-actions">
+                                                <button type="button" class="case-action-btn" data-action="move-up">↑</button>
+                                                <button type="button" class="case-action-btn" data-action="move-down">↓</button>
+                                                <button type="button" class="case-action-btn danger" data-action="delete-case">🗑️</button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="case-1-title" class="form-label">企業名/組織名</label>
+                                                <input type="text" id="case-1-title" class="form-input" value="TBS" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="case-1-description" class="form-label">導入事例詳細</label>
+                                                <textarea id="case-1-description" class="form-input" required>報道、情報、スポーツ、ラジオと幅広いジャンルで活用。ニュース速報や情報番組のナレーションに導入し、迅速な情報提供を実現しています。</textarea>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="case-1-logo" class="form-label">ロゴ画像</label>
+                                                <div class="file-input-wrapper">
+                                                    <button class="btn btn-outline">
+                                                        <span class="btn-icon">📁</span>
+                                                        画像を選択
+                                                    </button>
+                                                    <input type="file" id="case-1-logo" accept="image/*">
+                                                </div>
+                                                
+                                                <div class="image-preview">
+                                                    <img src="../assets/images/tbs-logo.png" alt="TBSロゴ">
+                                                    <div class="image-actions">
+                                                        <button class="image-action-btn">🔄</button>
+                                                        <button class="image-action-btn danger">🗑️</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="case-item" data-case-id="2">
+                                        <div class="case-header">
+                                            <h3>事例 #2</h3>
+                                            <div class="case-actions">
+                                                <button type="button" class="case-action-btn" data-action="move-up">↑</button>
+                                                <button type="button" class="case-action-btn" data-action="move-down">↓</button>
+                                                <button type="button" class="case-action-btn danger" data-action="delete-case">🗑️</button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="case-2-title" class="form-label">企業名/組織名</label>
+                                                <input type="text" id="case-2-title" class="form-input" value="JNN系列14局" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="case-2-description" class="form-label">導入事例詳細</label>
+                                                <textarea id="case-2-description" class="form-input" required>全国のJNN系列14局で様々な番組制作に活用。地域ニュースやローカル番組の制作効率化に貢献しています。</textarea>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="case-2-logo" class="form-label">ロゴ画像</label>
+                                                <div class="file-input-wrapper">
+                                                    <button class="btn btn-outline">
+                                                        <span class="btn-icon">📁</span>
+                                                        画像を選択
+                                                    </button>
+                                                    <input type="file" id="case-2-logo" accept="image/*">
+                                                </div>
+                                                
+                                                <div class="image-preview">
+                                                    <img src="../assets/images/jnn-logo.png" alt="JNNロゴ">
+                                                    <div class="image-actions">
+                                                        <button class="image-action-btn">🔄</button>
+                                                        <button class="image-action-btn danger">🗑️</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <button class="add-case-btn" id="add-case-item-btn" type="button">
+                                    <span class="btn-icon">+</span>
+                                    新しい事例を追加する
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- デモセクション編集 -->
+                <div class="section-content" id="demo-section">
+                    <div class="content-section">
+                        <div class="section-header">
+                            <h2 class="section-title">デモセクション</h2>
+                            <div class="section-actions">
+                                <button class="btn btn-success" id="demo-save-btn">
+                                    <span class="btn-icon">💾</span>
+                                    保存
+                                </button>
+                            </div>
+                        </div>
+                        <div class="section-body">
+                            <!-- 成功メッセージ (初期状態では非表示) -->
+                            <div class="alert alert-success" id="demo-success-message" style="display: none;">
+                                <span class="alert-icon">✓</span>
+                                <div class="alert-content">
+                                    <div class="alert-title">保存しました</div>
+                                    <p>デモセクションの変更が保存されました。</p>
+                                </div>
+                                <button class="alert-dismiss" onclick="this.parentElement.style.display='none'">×</button>
+                            </div>
+                            
+                            <form class="edit-form" id="demo-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="demo-title" class="form-label">見出し</label>
+                                        <input type="text" id="demo-title" class="form-input" value="音六AIを体験してみませんか？" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="demo-text" class="form-label">説明文</label>
+                                        <textarea id="demo-text" class="form-input" required>実際に音六AIを使って、ナレーション制作の革新を体験してください。無料デモのお申し込みやカスタマイズについてのご相談も承っております。</textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="demo-button-text" class="form-label">ボタンテキスト</label>
+                                        <input type="text" id="demo-button-text" class="form-input" value="無料デモを申し込む" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="demo-image" class="form-label">デモ画像</label>
+                                        <div class="file-input-wrapper">
+                                            <button class="btn btn-outline">
+                                                <span class="btn-icon">📁</span>
+                                                画像をアップロード
+                                            </button>
+                                            <input type="file" id="demo-image" accept="image/*">
+                                        </div>
+                                        
+                                        <div class="image-preview">
+                                            <img src="../assets/images/demo-image.png" alt="デモ画像プレビュー">
+                                            <div class="image-actions">
+                                                <button class="image-action-btn">🔄</button>
+                                                <button class="image-action-btn danger">🗑️</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQセクション編集 -->
+                <div class="section-content" id="faq-section">
+                    <div class="content-section">
+                        <div class="section-header">
+                            <h2 class="section-title">FAQセクション</h2>
+                            <div class="section-actions">
+                                <button class="btn btn-primary" id="add-faq-btn">
+                                    <span class="btn-icon">+</span>
+                                    質問を追加
+                                </button>
+                                <button class="btn btn-success" id="faq-save-btn">
+                                    <span class="btn-icon">💾</span>
+                                    保存
+                                </button>
+                            </div>
+                        </div>
+                        <div class="section-body">
+                            <!-- 成功メッセージ (初期状態では非表示) -->
+                            <div class="alert alert-success" id="faq-success-message" style="display: none;">
+                                <span class="alert-icon">✓</span>
+                                <div class="alert-content">
+                                    <div class="alert-title">保存しました</div>
+                                    <p>FAQセクションの変更が保存されました。</p>
+                                </div>
+                                <button class="alert-dismiss" onclick="this.parentElement.style.display='none'">×</button>
+                            </div>
+                            
+                            <form class="edit-form" id="faq-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="faq-title" class="form-label">セクション見出し</label>
+                                        <input type="text" id="faq-title" class="form-input" value="よくある質問" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="faq-subtitle" class="form-label">セクションサブタイトル</label>
+                                        <textarea id="faq-subtitle" class="form-input" required>音六AIについてよくいただく質問にお答えします</textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="faq-container">
+                                    <div class="faq-item" data-faq-id="1">
+                                        <div class="faq-header">
+                                            <h3>質問 #1</h3>
+                                            <div class="faq-actions">
+                                                <button type="button" class="faq-action-btn" data-action="move-up">↑</button>
+                                                <button type="button" class="faq-action-btn" data-action="move-down">↓</button>
+                                                <button type="button" class="faq-action-btn danger" data-action="delete-faq">🗑️</button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="faq-1-question" class="form-label">質問</label>
+                                                <input type="text" id="faq-1-question" class="form-input" value="最大何分のナレーションを生成できますか？" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="faq-1-answer" class="form-label">回答</label>
+                                                <textarea id="faq-1-answer" class="form-input" rows="4" required>1つのプロジェクトで最大90分の音声を生成できます。長尺のドキュメンタリーやトレーニング映像など、様々な用途に対応可能です。</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="faq-item" data-faq-id="2">
+                                        <div class="faq-header">
+                                            <h3>質問 #2</h3>
+                                            <div class="faq-actions">
+                                                <button type="button" class="faq-action-btn" data-action="move-up">↑</button>
+                                                <button type="button" class="faq-action-btn" data-action="move-down">↓</button>
+                                                <button type="button" class="faq-action-btn danger" data-action="delete-faq">🗑️</button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="faq-2-question" class="form-label">質問</label>
+                                                <input type="text" id="faq-2-question" class="form-input" value="使用した原稿は生成AIの学習に利用されますか？" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="faq-2-answer" class="form-label">回答</label>
+                                                <textarea id="faq-2-answer" class="form-input" rows="4" required>使用した原稿は生成AIの学習には利用されないため、安心してご利用ください。機密情報や未公開コンテンツの制作にも適しています。</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="faq-item" data-faq-id="3">
+                                        <div class="faq-header">
+                                            <h3>質問 #3</h3>
+                                            <div class="faq-actions">
+                                                <button type="button" class="faq-action-btn" data-action="move-up">↑</button>
+                                                <button type="button" class="faq-action-btn" data-action="move-down">↓</button>
+                                                <button type="button" class="faq-action-btn danger" data-action="delete-faq">🗑️</button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="faq-3-question" class="form-label">質問</label>
+                                                <input type="text" id="faq-3-question" class="form-input" value="読み上げる音声にどのような種類がありますか？" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="faq-3-answer" class="form-label">回答</label>
+                                                <textarea id="faq-3-answer" class="form-input" rows="4" required>男性・女性・子供など、様々な種類の声を選択することができます。年齢層や雰囲気も多様なバリエーションをご用意しており、コンテンツに最適な声質をお選びいただけます。</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <button class="add-faq-btn" id="add-faq-item-btn" type="button">
+                                    <span class="btn-icon">+</span>
+                                    新しい質問を追加する
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- お問い合わせセクション編集 -->
+                <div class="section-content" id="contact-section">
+                    <div class="content-section">
+                        <div class="section-header">
+                            <h2 class="section-title">お問い合わせセクション</h2>
+                            <div class="section-actions">
+                                <button class="btn btn-success" id="contact-save-btn">
+                                    <span class="btn-icon">💾</span>
+                                    保存
+                                </button>
+                            </div>
+                        </div>
+                        <div class="section-body">
+                            <!-- 成功メッセージ (初期状態では非表示) -->
+                            <div class="alert alert-success" id="contact-success-message" style="display: none;">
+                                <span class="alert-icon">✓</span>
+                                <div class="alert-content">
+                                    <div class="alert-title">保存しました</div>
+                                    <p>お問い合わせセクションの変更が保存されました。</p>
+                                </div>
+                                <button class="alert-dismiss" onclick="this.parentElement.style.display='none'">×</button>
+                            </div>
+                            
+                            <form class="edit-form" id="contact-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="contact-title" class="form-label">セクション見出し</label>
+                                        <input type="text" id="contact-title" class="form-input" value="お問い合わせ" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="contact-subtitle" class="form-label">セクションサブタイトル</label>
+                                        <textarea id="contact-subtitle" class="form-input" required>ご質問や資料請求、デモのお申し込みはこちらから</textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="tabs">
+                                    <div class="tab-item active" data-tab="contact-info">連絡先情報</div>
+                                    <div class="tab-item" data-tab="form-fields">フォーム項目</div>
+                                </div>
+                                
+                                <div class="tab-content active" id="contact-info-content">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="contact-email-title" class="form-label">メール見出し</label>
+                                            <input type="text" id="contact-email-title" class="form-input" value="メールでのお問い合わせ" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="contact-email-dept" class="form-label">部署名</label>
+                                            <input type="text" id="contact-email-dept" class="form-input" value="メディアテクノロジー局﻿音六AI事務局" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="contact-email" class="form-label">メールアドレス</label>
+                                            <input type="email" id="contact-email" class="form-input" value="oto6@gr.tbs.co.jp" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="contact-phone-title" class="form-label">電話見出し</label>
+                                            <input type="text" id="contact-phone-title" class="form-input" value="電話でのお問い合わせ">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="contact-phone-hours" class="form-label">営業時間</label>
+                                            <input type="text" id="contact-phone-hours" class="form-input" value="平日 9:00-18:00">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="contact-phone" class="form-label">電話番号</label>
+                                            <input type="tel" id="contact-phone" class="form-input" value="03-1234-5678">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="tab-content" id="form-fields-content">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label>必須フィールド</label>
+                                            <div class="checkbox-group">
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox" id="required-company" name="required-fields" value="company" checked>
+                                                    <span class="checkmark"></span>
+                                                    会社名・団体名
+                                                </label>
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox" id="required-name" name="required-fields" value="name" checked>
+                                                    <span class="checkmark"></span>
+                                                    お名前
+                                                </label>
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox" id="required-email" name="required-fields" value="email" checked>
+                                                    <span class="checkmark"></span>
+                                                    メールアドレス
+                                                </label>
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox" id="required-phone" name="required-fields" value="phone">
+                                                    <span class="checkmark"></span>
+                                                    電話番号
+                                                </label>
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox" id="required-inquiry-type" name="required-fields" value="inquiry-type" checked>
+                                                    <span class="checkmark"></span>
+                                                    お問い合わせ内容
+                                                </label>
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox" id="required-message" name="required-fields" value="message" checked>
+                                                    <span class="checkmark"></span>
+                                                    お問い合わせ詳細
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="inquiry-types" class="form-label">お問い合わせ種別（1行に1つ）</label>
+                                            <textarea id="inquiry-types" class="form-input" rows="5" required>資料請求
+デモ申込
+導入相談
+その他</textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="submit-button-text" class="form-label">送信ボタンテキスト</label>
+                                            <input type="text" id="submit-button-text" class="form-input" value="送信する" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- フッターセクション編集 -->
+                <div class="section-content" id="footer-section">
+                    <div class="content-section">
+                        <div class="section-header">
+                            <h2 class="section-title">フッターセクション</h2>
+                            <div class="section-actions">
+                                <button class="btn btn-success" id="footer-save-btn">
+                                    <span class="btn-icon">💾</span>
+                                    保存
+                                </button>
+                            </div>
+                        </div>
+                        <div class="section-body">
+                            <!-- 成功メッセージ (初期状態では非表示) -->
+                            <div class="alert alert-success" id="footer-success-message" style="display: none;">
+                                <span class="alert-icon">✓</span>
+                                <div class="alert-content">
+                                    <div class="alert-title">保存しました</div>
+                                    <p>フッターセクションの変更が保存されました。</p>
+                                </div>
+                                <button class="alert-dismiss" onclick="this.parentElement.style.display='none'">×</button>
+                            </div>
+                            
+                            <form class="edit-form" id="footer-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="footer-text" class="form-label">フッターテキスト</label>
+                                        <textarea id="footer-text" class="form-input" required>TBSグループが開発した革新的な音声合成システム。放送品質のナレーションを簡単に制作できます。</textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="tabs">
+                                    <div class="tab-item active" data-tab="footer-contact">連絡先情報</div>
+                                    <div class="tab-item" data-tab="footer-links">リンク</div>
+                                    <div class="tab-item" data-tab="footer-copyright">著作権</div>
+                                </div>
+                                
+                                <div class="tab-content active" id="footer-contact-content">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="footer-address" class="form-label">住所</label>
+                                            <input type="text" id="footer-address" class="form-input" value="〒107-8066 東京都港区赤坂5-3-6" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="footer-phone" class="form-label">電話番号</label>
+                                            <input type="text" id="footer-phone" class="form-input" value="03-1234-5678" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="footer-email" class="form-label">メールアドレス</label>
+                                            <input type="email" id="footer-email" class="form-input" value="oto6@gr.tbs.co.jp" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="tab-content" id="footer-links-content">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="footer-service-links" class="form-label">サービスリンク（1行に1つ、形式: テキスト|URL）</label>
+                                            <textarea id="footer-service-links" class="form-input" rows="5">音声合成システム|#
+カスタムボイス開発|#
+API連携|#
+サポートプラン|#
+トレーニング|#</textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="footer-company-links" class="form-label">会社情報リンク（1行に1つ、形式: テキスト|URL）</label>
+                                            <textarea id="footer-company-links" class="form-input" rows="5">会社概要|#
+ニュース|#
+採用情報|#
+プライバシーポリシー|#
+利用規約|#</textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="footer-social" class="form-label">SNSリンク（1行に1つ、形式: プラットフォーム|URL）</label>
+                                            <textarea id="footer-social" class="form-input" rows="3">Twitter|https://twitter.com
+Facebook|https://facebook.com
+YouTube|https://youtube.com</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="tab-content" id="footer-copyright-content">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="footer-copyright" class="form-label">著作権表示</label>
+                                            <input type="text" id="footer-copyright" class="form-input" value="© 2025 音六AI. All rights reserved." required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SEO設定 -->
+                <div class="section-content" id="seo-section">
+                    <div class="content-section">
+                        <div class="section-header">
+                            <h2 class="section-title">SEO設定</h2>
+                            <div class="section-actions">
+                                <button class="btn btn-success" id="seo-save-btn">
+                                    <span class="btn-icon">💾</span>
+                                    保存
+                                </button>
+                            </div>
+                        </div>
+                        <div class="section-body">
+                            <!-- 成功メッセージ (初期状態では非表示) -->
+                            <div class="alert alert-success" id="seo-success-message" style="display: none;">
+                                <span class="alert-icon">✓</span>
+                                <div class="alert-content">
+                                    <div class="alert-title">保存しました</div>
+                                    <p>SEO設定の変更が保存されました。</p>
+                                </div>
+                                <button class="alert-dismiss" onclick="this.parentElement.style.display='none'">×</button>
+                            </div>
+                            
+                            <form class="edit-form" id="seo-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="seo-title" class="form-label">ページタイトル</label>
+                                        <input type="text" id="seo-title" class="form-input" value="音六AI - 革新的な音声合成システム | TBSメディアテクノロジー" required>
+                                        <p class="form-help">検索結果に表示されるタイトル (60文字以内推奨)</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="seo-description" class="form-label">メタディスクリプション</label>
+                                        <textarea id="seo-description" class="form-input" required>音六AI - 高品質な音声合成システム。音声尺にフィットしたナレーション、読み・イントネーション指定機能、多言語対応で映像制作を効率化します。</textarea>
+                                        <p class="form-help">検索結果に表示される説明文 (160文字以内推奨)</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="seo-keywords" class="form-label">メタキーワード</label>
+                                        <input type="text" id="seo-keywords" class="form-input" value="音六AI, 音声合成, AI音声, ナレーション作成, テキスト読み上げ, 動画ナレーション, 多言語音声, テレビ制作">
+                                        <p class="form-help">カンマ区切りでキーワードを入力</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="og-title" class="form-label">OGPタイトル</label>
+                                        <input type="text" id="og-title" class="form-input" value="音六AI - 革新的な音声合成システム" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="og-description" class="form-label">OGP説明文</label>
+                                        <textarea id="og-description" class="form-input" required>20分のナレ録りが1分で完了。コスト削減と効率化を実現する次世代音声合成システムを体験してください。</textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="og-image" class="form-label">OGP画像</label>
+                                        <div class="file-input-wrapper">
+                                            <button class="btn btn-outline">
+                                                <span class="btn-icon">📁</span>
+                                                画像をアップロード
+                                            </button>
+                                            <input type="file" id="og-image" accept="image/*">
+                                        </div>
+                                        <p class="form-help">SNSでシェアされたときに表示される画像 (1200 x 630px推奨)</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="canonical-url" class="form-label">正規URL</label>
+                                        <input type="url" id="canonical-url" class="form-input" value="https://www.otoroku-ai.jp">
+                                        <p class="form-help">サイトのメインURLを指定</p>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 一般設定 -->
+                <div class="section-content" id="general-section">
+                    <div class="content-section">
+                        <div class="section-header">
+                            <h2 class="section-title">一般設定</h2>
+                            <div class="section-actions">
+                                <button class="btn btn-success" id="general-save-btn">
+                                    <span class="btn-icon">💾</span>
+                                    保存
+                                </button>
+                            </div>
+                        </div>
+                        <div class="section-body">
+                            <!-- 成功メッセージ (初期状態では非表示) -->
+                            <div class="alert alert-success" id="general-success-message" style="display: none;">
+                                <span class="alert-icon">✓</span>
+                                <div class="alert-content">
+                                    <div class="alert-title">保存しました</div>
+                                    <p>一般設定の変更が保存されました。</p>
+                                </div>
+                                <button class="alert-dismiss" onclick="this.parentElement.style.display='none'">×</button>
+                            </div>
+                            
+                            <form class="edit-form" id="general-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="site-title" class="form-label">サイトタイトル</label>
+                                        <input type="text" id="site-title" class="form-input" value="音六AI" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="primary-color" class="form-label">メインカラー</label>
+                                        <input type="color" id="primary-color" class="form-input" value="#f97141">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="secondary-color" class="form-label">サブカラー</label>
+                                        <input type="color" id="secondary-color" class="form-input" value="#2d3748">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="logo-upload" class="form-label">ロゴ画像</label>
+                                        <div class="file-input-wrapper">
+                                            <button class="btn btn-outline">
+                                                <span class="btn-icon">📁</span>
+                                                ロゴをアップロード
+                                            </button>
+                                            <input type="file" id="logo-upload" accept="image/*">
+                                        </div>
+                                        
+                                        <div class="image-preview">
+                                            <img src="../assets/images/logo.png" alt="ロゴ画像">
+                                            <div class="image-actions">
+                                                <button class="image-action-btn">🔄</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="favicon-emoji" class="form-label">ファビコン (絵文字)</label>
+                                        <input type="text" id="favicon-emoji" class="form-input" value="🎙️" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="analytics-id" class="form-label">Google Analytics ID</label>
+                                        <input type="text" id="analytics-id" class="form-input" placeholder="G-XXXXXXXXXX">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="../assets/js/admin.js"></script>
+</body>
+</html>

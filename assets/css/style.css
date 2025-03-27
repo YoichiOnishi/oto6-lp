@@ -1,0 +1,1014 @@
+/* リセットCSS */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 基本設定 */
+:root {
+    --primary: #f97141;
+    --primary-dark: #e55a29;
+    --primary-light: #ffece6;
+    --secondary: #2d3748;
+    --text-dark: #1a202c;
+    --text-light: #718096;
+    --text-white: #ffffff;
+    --bg-light: #f8f9fa;
+    --bg-white: #ffffff;
+    --bg-dark: #2d3748;
+    --success: #38a169;
+    --warning: #e9b949;
+    --danger: #e53e3e;
+    --border-light: #e2e8f0;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --radius-sm: 0.25rem;
+    --radius: 0.5rem;
+    --radius-lg: 1rem;
+    --transition: all 0.3s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 62.5%; /* 10px = 1rem */
+}
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+    background-color: var(--bg-white);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary);
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 2rem;
+    margin: 0 auto;
+}
+
+.section {
+    padding: 8rem 0;
+}
+
+.section-title {
+    font-size: 3.6rem;
+    font-weight: 700;
+    margin-bottom: 1.6rem;
+    text-align: center;
+    color: var(--text-dark);
+}
+
+.section-subtitle {
+    font-size: 1.8rem;
+    color: var(--text-light);
+    margin-bottom: 4rem;
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ボタン */
+.btn {
+    display: inline-block;
+    padding: 1.2rem 2.4rem;
+    border-radius: var(--radius);
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+    font-size: 1.6rem;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--text-white);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    color: var(--text-white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary);
+    color: var(--text-white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.btn-lg {
+    padding: 1.4rem 3rem;
+    font-size: 1.8rem;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+/* ヘッダー */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+header.scrolled {
+    box-shadow: var(--shadow);
+}
+
+.header-inner {
+    height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    max-height: 4.5rem;
+    width: auto;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 3rem;
+    align-items: center;
+}
+
+nav a {
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    z-index: 101;
+}
+
+.mobile-menu-btn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-dark);
+    position: absolute;
+    left: 0;
+    transition: var(--transition);
+}
+
+.mobile-menu-btn span:nth-child(1) {
+    top: 0;
+}
+
+.mobile-menu-btn span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.mobile-menu-btn span:nth-child(3) {
+    bottom: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 50%;
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    bottom: 50%;
+}
+
+/* ヒーローセクション */
+.hero {
+    padding: 16rem 0 10rem;
+    background: linear-gradient(135deg, rgba(249, 113, 65, 0.1) 0%, rgba(255, 236, 230, 0.5) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+h1 {
+    font-size: 4.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+}
+
+.hero-text p {
+    font-size: 1.8rem;
+    color: var(--text-light);
+    margin-bottom: 3rem;
+    max-width: 500px;
+}
+
+.hero-image {
+    position: relative;
+}
+
+.interface-screenshot {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 10px solid var(--bg-white);
+    transform: perspective(1000px) rotateY(-5deg);
+    transition: var(--transition);
+    max-width: 100%;
+    height: auto;
+}
+
+.interface-screenshot:hover {
+    transform: perspective(1000px) rotateY(0);
+}
+
+.hero-shape {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    filter: blur(100px);
+    opacity: 0.2;
+    z-index: -1;
+}
+
+.shape-1 {
+    top: -150px;
+    left: -150px;
+}
+
+.shape-2 {
+    bottom: -150px;
+    right: -150px;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+/* 特徴セクション */
+.features {
+    padding: 10rem 0;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 4rem;
+}
+
+.feature-card {
+    padding: 3rem;
+    border-radius: var(--radius-lg);
+    background-color: var(--bg-white);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-top: 4px solid var(--primary);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.feature-icon {
+    width: 6rem;
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-light);
+    border-radius: var(--radius);
+    margin-bottom: 2rem;
+    font-size: 2.4rem;
+    color: var(--primary);
+}
+
+.feature-title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    color: var(--text-dark);
+}
+
+.feature-text {
+    color: var(--text-light);
+    font-size: 1.6rem;
+}
+
+/* 導入効果セクション */
+.benefits {
+    padding: 10rem 0;
+    background-color: var(--bg-light);
+}
+
+.benefits-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 3rem;
+}
+
+.benefit-card {
+    background-color: var(--bg-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.benefit-header {
+    padding: 2rem;
+    background-color: var(--primary);
+    color: var(--text-white);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.benefit-icon {
+    font-size: 2.4rem;
+}
+
+.benefit-title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.benefit-body {
+    padding: 2rem;
+}
+
+.benefit-description {
+    margin-bottom: 2rem;
+    color: var(--text-light);
+}
+
+.benefit-stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 1.4rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.stat.highlight .stat-value {
+    color: var(--primary);
+}
+
+.stat-arrow {
+    font-size: 2.4rem;
+    color: var(--text-light);
+}
+
+/* 導入事例セクション */
+.cases {
+    padding: 10rem 0;
+}
+
+.cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 4rem;
+}
+
+.case-card {
+    padding: 3rem;
+    border-radius: var(--radius-lg);
+    background-color: var(--bg-white);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    text-align: center;
+}
+
+.case-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.case-logo {
+    margin: 0 auto 2rem;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.case-title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+}
+
+.case-text {
+    color: var(--text-light);
+}
+
+/* デモ体験セクション */
+.demo {
+    padding: 8rem 0;
+    background-color: var(--primary-light);
+}
+
+.demo-wrapper {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.demo-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+}
+
+.demo-text {
+    font-size: 1.8rem;
+    color: var(--text-light);
+    margin-bottom: 3rem;
+}
+
+/* FAQセクション */
+.faq {
+    padding: 10rem 0;
+    background-color: var(--bg-light);
+}
+
+.accordion {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.accordion-item {
+    margin-bottom: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+}
+
+.accordion-header {
+    padding: 2rem;
+    background-color: var(--bg-white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.accordion-header:hover {
+    background-color: var(--bg-light);
+}
+
+.accordion-title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.accordion-icon {
+    font-size: 2rem;
+    transition: var(--transition);
+}
+
+.accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background-color: var(--bg-white);
+}
+
+.accordion-content {
+    padding: 0 2rem 2rem;
+    color: var(--text-light);
+}
+
+.accordion-item.active .accordion-header {
+    background-color: var(--bg-light);
+}
+
+.accordion-item.active .accordion-icon {
+    transform: rotate(45deg);
+}
+
+.accordion-item.active .accordion-body {
+    max-height: 500px;
+}
+
+/* お問い合わせセクション */
+.contact {
+    padding: 10rem 0;
+}
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.contact-item {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.contact-icon {
+    font-size: 2.4rem;
+    color: var(--primary);
+}
+
+.contact-detail h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.contact-detail p {
+    color: var(--text-light);
+}
+
+.contact-form-container {
+    background-color: var(--bg-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: 3rem;
+}
+
+.contact-form {
+    display: grid;
+    gap: 2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.required {
+    color: var(--danger);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 1.2rem;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    font-size: 1.6rem;
+    font-family: inherit;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(249, 113, 65, 0.1);
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 3.5rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2.4rem;
+    width: 2.4rem;
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    border-color: var(--primary);
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 0.8rem;
+    top: 0.4rem;
+    width: 0.6rem;
+    height: 1.2rem;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-text {
+    font-size: 1.4rem;
+    color: var(--text-light);
+}
+
+/* フッター */
+footer {
+    padding: 8rem 0 2rem;
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 6rem;
+}
+
+.footer-logo {
+    margin-bottom: 2rem;
+    display: inline-block;
+}
+
+.footer-text {
+    margin-bottom: 2rem;
+    opacity: 0.8;
+    max-width: 300px;
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-link {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-white);
+    font-size: 1.8rem;
+    transition: var(--transition);
+}
+
+.social-link:hover {
+    background-color: var(--primary);
+    color: var(--text-white);
+    transform: translateY(-3px);
+}
+
+.social-link svg {
+    width: 2rem;
+    height: 2rem;
+    color: var(--text-white);
+}
+
+.footer-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: var(--text-white);
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--text-white);
+    padding-left: 0.5rem;
+}
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.footer-contact .contact-item {
+    align-items: flex-start;
+}
+
+.footer-contact .contact-icon {
+    color: var(--primary);
+    margin-top: 0.3rem;
+}
+
+.footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    opacity: 0.7;
+    font-size: 1.4rem;
+}
+
+/* レスポンシブ設定 */
+@media (max-width: 992px) {
+    html {
+        font-size: 60%;
+    }
+    
+    .hero-content,
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-text {
+        text-align: center;
+    }
+    
+    .hero-text p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .cta-buttons {
+        justify-content: center;
+    }
+    
+    .interface-screenshot {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .benefits-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .demo-wrapper {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .demo-text {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-inner {
+        position: relative;
+    }
+    
+    nav {
+        position: fixed;
+        top: 8rem;
+        left: 0;
+        width: 100%;
+        padding: 2rem;
+        background-color: var(--bg-white);
+        box-shadow: var(--shadow);
+        transform: translateY(-150%);
+        opacity: 0;
+        pointer-events: none;
+        transition: var(--transition);
+        z-index: 99;
+    }
+    
+    nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .features-grid,
+    .cases-grid,
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 576px) {
+    html {
+        font-size: 55%;
+    }
+    
+    .hero {
+        padding: 12rem 0 6rem;
+    }
+    
+    .hero-text h1 {
+        font-size: 3.6rem;
+    }
+    
+    .cta-buttons {
+        gap: 1rem;
+    }
+    
+    .btn-lg {
+        padding: 1.2rem 2.4rem;
+        font-size: 1.6rem;
+    }
+    
+    .section {
+        padding: 6rem 0;
+    }
+    
+    .section-title {
+        font-size: 3rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1.6rem;
+        margin-bottom: 3rem;
+    }
+    
+    .features-grid {
+        gap: 2rem;
+    }
+    
+    .feature-card {
+        padding: 2rem;
+    }
+    
+    .footer {
+        padding: 6rem 0 2rem;
+    }
+}
+
+/* iPhone SE など非常に小さい画面用の追加調整 */
+@media (max-width: 375px) {
+    html {
+        font-size: 50%;
+    }
+    
+    .container {
+        padding: 0 1.5rem;
+    }
+    
+    .hero-text h1 {
+        font-size: 3.2rem;
+    }
+    
+    .btn {
+        padding: 1rem 2rem;
+    }
+    
+    .btn-lg {
+        padding: 1.1rem 2.2rem;
+    }
+    
+    .accordion-title {
+        font-size: 1.6rem;
+    }
+    
+    .contact-form-container {
+        padding: 2rem;
+    }
+}

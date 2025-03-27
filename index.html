@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="音六AI - 高品質な音声合成システム。音声尺にフィットしたナレーション、読み・イントネーション指定機能、多言語対応で映像制作を効率化します。">
+    <meta name="keywords" content="音六AI, 音声合成, AI音声, ナレーション作成, テキスト読み上げ, 動画ナレーション, 多言語音声, テレビ制作">
+    <title>音六AI - 革新的な音声合成システム | TBSメディアテクノロジー</title>
+    
+    <!-- OGP設定 -->
+    <meta property="og:title" content="音六AI - 革新的な音声合成システム">
+    <meta property="og:description" content="20分のナレ録りが1分で完了。コスト削減と効率化を実現する次世代音声合成システムを体験してください。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.otoroku-ai.jp">
+    <meta property="og:image" content="https://www.otoroku-ai.jp/assets/images/ogp-image.jpg">
+    
+    <!-- ファビコン -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎙️</text></svg>">
+    
+    <!-- フォント -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- 構造化データ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "音六AI",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "要問合せ",
+        "priceCurrency": "JPY"
+      },
+      "description": "音声尺にフィットしたナレーション作成、読み・イントネーション指定機能、多言語ナレーション対応の音声合成システム",
+      "developer": {
+        "@type": "Organization",
+        "name": "TBSメディアテクノロジー"
+      }
+    }
+    </script>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="#" class="logo">
+                    <img src="assets/images/logo.png" alt="音六AI" width="180" height="auto">
+                </a>
+                
+                <button class="mobile-menu-btn" aria-label="メニューを開く">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <nav id="nav">
+                    <ul>
+                        <li><a href="#features">特徴</a></li>
+                        <li><a href="#benefits">導入効果</a></li>
+                        <li><a href="#cases">導入事例</a></li>
+                        <li><a href="#faq">よくある質問</a></li>
+                        <li><a href="#contact">お問い合わせ</a></li>
+                        <li><a href="#" class="btn btn-primary">無料デモ体験</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>AIの力でナレーション制作を<br>革新する</h1>
+                    <p>音六AIは、TBSグループが開発した高品質な音声合成システムです。音声尺にフィットしたナレーション作成、読み・イントネーション調整、多言語対応で、映像制作のワークフローを効率化します。</p>
+                    
+                    <div class="cta-buttons">
+                        <a href="#contact" class="btn btn-primary btn-lg">資料請求・お問い合わせ</a>
+                        <a href="#features" class="btn btn-outline btn-lg">詳しく見る</a>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <svg class="interface-screenshot" width="500" height="300" viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+                        <!-- 背景 -->
+                        <rect x="0" y="0" width="500" height="300" rx="10" fill="#2d3748" />
+                        
+                        <!-- タイトル部分 -->
+                        <rect x="20" y="20" width="460" height="40" rx="5" fill="#3a4559" />
+                        <text x="40" y="45" font-family="Arial" font-size="16" fill="#ffffff">音六AI - 音声合成システム</text>
+                        
+                        <!-- テキスト入力エリア -->
+                        <rect x="20" y="80" width="300" height="200" rx="5" fill="#ffffff" opacity="0.9" />
+                        <text x="35" y="105" font-family="Arial" font-size="14" fill="#2d3748">ここにテキストを入力してください</text>
+                        <line x1="35" y1="120" x2="285" y2="120" stroke="#ddd" stroke-width="1" />
+                        <line x1="35" y1="145" x2="265" y2="145" stroke="#ddd" stroke-width="1" />
+                        <line x1="35" y1="170" x2="280" y2="170" stroke="#ddd" stroke-width="1" />
+                        
+                        <!-- 音声波形表示エリア -->
+                        <rect x="340" y="80" width="140" height="80" rx="5" fill="#3a4559" />
+                        
+                        <!-- 音声波形 -->
+                        <path d="M350,120 Q355,100 360,120 Q365,140 370,120 Q375,100 380,120 Q385,140 390,120 Q395,100 400,120 Q405,140 410,120 Q415,100 420,120 Q425,140 430,120 Q435,100 440,120 Q445,140 450,120 Q455,100 460,120 Q465,140 470,120" 
+                              stroke="#f97141" stroke-width="2" fill="none" />
+                        
+                        <!-- コントロールパネル -->
+                        <rect x="340" y="175" width="140" height="105" rx="5" fill="#3a4559" />
+                        
+                        <!-- ボタン -->
+                        <circle cx="375" cy="205" r="15" fill="#f97141" />
+                        <polygon points="370,205 383,197 383,213" fill="white" />
+                        
+                        <!-- スピード調整 -->
+                        <text x="355" y="240" font-family="Arial" font-size="10" fill="#ffffff">スピード</text>
+                        <rect x="355" y="245" width="110" height="6" rx="3" fill="#1a202c" />
+                        <circle cx="390" cy="248" r="6" fill="#f97141" />
+                        
+                        <!-- トーン調整 -->
+                        <text x="355" y="265" font-family="Arial" font-size="10" fill="#ffffff">トーン</text>
+                        <rect x="355" y="270" width="110" height="6" rx="3" fill="#1a202c" />
+                        <circle cx="410" cy="273" r="6" fill="#f97141" />
+                    </svg>
+                    <div class="hero-shape shape-1"></div>
+                    <div class="hero-shape shape-2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特徴セクション -->
+    <section class="features section" id="features">
+        <div class="container">
+            <h2 class="section-title">音六AIの特徴</h2>
+            <p class="section-subtitle">プロフェッショナルなナレーション制作を可能にする高度な機能</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📏</div>
+                    <h3 class="feature-title">音声尺にフィットしたナレーション</h3>
+                    <p class="feature-text">指定した時間枠にぴったり収まる音声を生成。テロップに合わせたナレーションや、限られた時間内での情報伝達に最適です。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🗣️</div>
+                    <h3 class="feature-title">読み・イントネーション指定機能</h3>
+                    <p class="feature-text">難読語や専門用語も、正確な読み方とイントネーションを指定可能。自然で聞き取りやすい音声を実現します。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3 class="feature-title">多言語ナレーション対応</h3>
+                    <p class="feature-text">日本語だけでなく、英語、中国語、韓国語など、複数の言語に対応。国際的なコンテンツ制作をサポートします。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 導入効果セクション -->
+    <section class="benefits section" id="benefits">
+        <div class="container">
+            <h2 class="section-title">導入効果</h2>
+            <p class="section-subtitle">音六AIがもたらす具体的なメリット</p>
+            
+            <div class="benefits-wrapper">
+                <div class="benefit-card">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">⏱️</div>
+                        <h3 class="benefit-title">作業時間の大幅削減</h3>
+                    </div>
+                    <div class="benefit-body">
+                        <p class="benefit-description">従来20分かかっていたナレーション録音作業が、わずか1分で完了。スピード感のある制作ワークフローを実現します。</p>
+                        <div class="benefit-stats">
+                            <div class="stat">
+                                <span class="stat-label">従来の方法</span>
+                                <span class="stat-value">20分</span>
+                            </div>
+                            <div class="stat-arrow">→</div>
+                            <div class="stat highlight">
+                                <span class="stat-label">音六AI使用時</span>
+                                <span class="stat-value">1分</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                                    <div class="benefit-card">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">💰</div>
+                        <h3 class="benefit-title">コスト削減効果</h3>
+                    </div>
+                    <div class="benefit-body">
+                        <p class="benefit-description">8分の映像制作にかかるナレーションコストを数千円から数十円に削減。制作予算の効率的な配分が可能になります。</p>
+                        <div class="benefit-stats">
+                            <div class="stat">
+                                <span class="stat-label">従来のコスト</span>
+                                <span class="stat-value">数千円</span>
+                            </div>
+                            <div class="stat-arrow">→</div>
+                            <div class="stat highlight">
+                                <span class="stat-label">音六AI使用時</span>
+                                <span class="stat-value">数十円</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 導入事例セクション -->
+    <section class="cases section" id="cases">
+        <div class="container">
+            <h2 class="section-title">導入事例</h2>
+            <p class="section-subtitle">多くの放送局で活用されています</p>
+            
+            <div class="cases-grid">
+                <div class="case-card">
+                    <div class="case-logo">
+                        <img src="assets/images/tbs-logo.png" alt="TBS" width="120" height="auto">
+                    </div>
+                    <h3 class="case-title">TBS</h3>
+                    <p class="case-text">報道、情報、スポーツ、ラジオと幅広いジャンルで活用。ニュース速報や情報番組のナレーションに導入し、迅速な情報提供を実現しています。</p>
+                </div>
+                
+                <div class="case-card">
+                    <div class="case-logo">
+                        <img src="assets/images/jnn-logo.png" alt="JNN" width="120" height="auto">
+                    </div>
+                    <h3 class="case-title">JNN系列14局</h3>
+                    <p class="case-text">全国のJNN系列14局で様々な番組制作に活用。地域ニュースやローカル番組の制作効率化に貢献しています。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- デモ体験セクション -->
+    <section class="demo section">
+        <div class="container">
+            <div class="demo-wrapper">
+                <div class="demo-content">
+                    <h2 class="demo-title">音六AIを体験してみませんか？</h2>
+                    <p class="demo-text">実際に音六AIを使って、ナレーション制作の革新を体験してください。無料デモのお申し込みやカスタマイズについてのご相談も承っております。</p>
+                    <a href="#contact" class="btn btn-primary btn-lg">無料デモを申し込む</a>
+                </div>
+                <div class="demo-image">
+                    <img src="assets/images/demo-image.png" alt="音六AIのデモ" width="450" height="auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQセクション -->
+    <section class="faq section" id="faq">
+        <div class="container">
+            <h2 class="section-title">よくある質問</h2>
+            <p class="section-subtitle">音六AIについてよくいただく質問にお答えします</p>
+            
+            <div class="accordion" id="faq-accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">最大何分のナレーションを生成できますか？</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            1つのプロジェクトで最大90分の音声を生成できます。長尺のドキュメンタリーやトレーニング映像など、様々な用途に対応可能です。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">使用した原稿は生成AIの学習に利用されますか？</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            使用した原稿は生成AIの学習には利用されないため、安心してご利用ください。機密情報や未公開コンテンツの制作にも適しています。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">読み上げる音声にどのような種類がありますか？</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            男性・女性・子供など、様々な種類の声を選択することができます。年齢層や雰囲気も多様なバリエーションをご用意しており、コンテンツに最適な声質をお選びいただけます。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">導入までにどれくらいの期間がかかりますか？</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            お申し込みから最短1週間でご利用いただけます。導入前の無料トライアルも可能ですので、まずはお気軽にお問い合わせください。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">システムの更新頻度はどのくらいですか？</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            月1回の定期アップデートを実施しており、常に最新の音声合成技術を反映しています。お客様からのフィードバックを元に、使いやすさや音質の向上に継続的に取り組んでいます。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お問い合わせセクション -->
+    <section class="contact section" id="contact">
+        <div class="container">
+            <h2 class="section-title">お問い合わせ</h2>
+            <p class="section-subtitle">ご質問や資料請求、デモのお申し込みはこちらから</p>
+            
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-detail">
+                            <h3>メールでのお問い合わせ</h3>
+                            <p>メディアテクノロジー局﻿音六AI事務局</p>
+                            <p><a href="mailto:oto6@gr.tbs.co.jp">oto6@gr.tbs.co.jp</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-detail">
+                            <h3>電話でのお問い合わせ</h3>
+                            <p>平日 9:00-18:00</p>
+                            <p><a href="tel:0312345678">03-1234-5678</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="company">会社名・団体名 <span class="required">*</span></label>
+                            <input type="text" id="company" name="company" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="name">お名前 <span class="required">*</span></label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">メールアドレス <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">電話番号</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inquiry-type">お問い合わせ内容 <span class="required">*</span></label>
+                            <select id="inquiry-type" name="inquiry-type" required>
+                                <option value="">選択してください</option>
+                                <option value="資料請求">資料請求</option>
+                                <option value="デモ申込">デモ申込</option>
+                                <option value="導入相談">導入相談</option>
+                                <option value="その他">その他</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">お問い合わせ詳細 <span class="required">*</span></label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="privacy-policy" name="privacy-policy" required>
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text"><a href="#" target="_blank">プライバシーポリシー</a>に同意する</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">送信する</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="#" class="footer-logo">
+                        <img src="assets/images/logo.png" alt="音六AI" width="150" height="auto">
+                    </a>
+                    <p class="footer-text">TBSグループが開発した革新的な音声合成システム。放送品質のナレーションを簡単に制作できます。</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">サービス</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">音声合成システム</a></li>
+                        <li><a href="#">カスタムボイス開発</a></li>
+                        <li><a href="#">API連携</a></li>
+                        <li><a href="#">サポートプラン</a></li>
+                        <li><a href="#">トレーニング</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">会社情報</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">会社概要</a></li>
+                        <li><a href="#">ニュース</a></li>
+                        <li><a href="#">採用情報</a></li>
+                        <li><a href="#">プライバシーポリシー</a></li>
+                        <li><a href="#">利用規約</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">お問い合わせ</h3>
+                    <div class="footer-contact">
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <p>〒107-8066 東京都港区赤坂5-3-6</p>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <p>03-1234-5678</p>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">✉️</span>
+                            <p>oto6@gr.tbs.co.jp</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 音六AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

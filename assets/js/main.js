@@ -73,12 +73,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const monthlyPrices = document.querySelectorAll('.monthly-price');
     const yearlyPrices = document.querySelectorAll('.yearly-price');
     
-    // トグルスライダーの初期位置を設定
+    // トグルスライダーの位置と幅を設定する関数
     function updateToggleSlider() {
-        if (yearlyBtn.classList.contains('active')) {
+        const activeBtn = document.querySelector('.toggle-btn.active');
+        if (activeBtn) {
+            toggleSlider.style.left = activeBtn.offsetLeft + 'px';
+            toggleSlider.style.width = activeBtn.offsetWidth + 'px';
+        } else if (yearlyBtn.classList.contains('active')) {
             toggleSlider.style.left = yearlyBtn.offsetLeft + 'px';
+            toggleSlider.style.width = yearlyBtn.offsetWidth + 'px';
         } else {
             toggleSlider.style.left = monthlyBtn.offsetLeft + 'px';
+            toggleSlider.style.width = monthlyBtn.offsetWidth + 'px';
         }
     }
     
@@ -89,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
     monthlyBtn.addEventListener('click', function() {
         yearlyBtn.classList.remove('active');
         monthlyBtn.classList.add('active');
-        toggleSlider.style.left = monthlyBtn.offsetLeft + 'px';
+        updateToggleSlider();
         
         // 料金表示を切り替え
         monthlyPrices.forEach(price => price.style.display = 'block');
@@ -100,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
     yearlyBtn.addEventListener('click', function() {
         monthlyBtn.classList.remove('active');
         yearlyBtn.classList.add('active');
-        toggleSlider.style.left = yearlyBtn.offsetLeft + 'px';
+        updateToggleSlider();
         
         // 料金表示を切り替え
         monthlyPrices.forEach(price => price.style.display = 'none');

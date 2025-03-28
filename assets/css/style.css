@@ -557,6 +557,12 @@ nav a:hover {
     gap: 1rem;
     margin-bottom: 3rem;
     position: relative;
+    background-color: #f1f5f9;
+    border-radius: 2rem;
+    padding: 0.5rem;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .toggle-btn {
@@ -569,6 +575,7 @@ nav a:hover {
     position: relative;
     z-index: 2;
     transition: color 0.3s ease;
+    white-space: nowrap;
 }
 
 .toggle-btn.active {
@@ -578,15 +585,14 @@ nav a:hover {
 
 .toggle-slider {
     position: absolute;
-    width: 10rem;
     height: 3.5rem;
-    background-color: #f1f5f9;
+    background-color: white;
     border-radius: 2rem;
     top: 50%;
-    left: 0;
     transform: translateY(-50%);
-    transition: left 0.3s ease;
+    transition: all 0.3s ease;
     z-index: 1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .pricing-grid {

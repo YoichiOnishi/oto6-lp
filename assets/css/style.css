@@ -3,6 +3,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    max-width: 100%;
 }
 
 /* 基本設定 */
@@ -30,6 +31,15 @@
     --transition: all 0.3s ease;
 }
 
+html, body {
+    overflow-x: hidden;
+    width: 100vw;
+    max-width: 100vw;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
 html {
     scroll-behavior: smooth;
     font-size: 62.5%; /* 10px = 1rem */
@@ -41,7 +51,6 @@ body {
     line-height: 1.7;
     color: var(--text-dark);
     background-color: var(--bg-white);
-    overflow-x: hidden;
 }
 
 a {
@@ -245,6 +254,7 @@ nav a:hover {
     background: linear-gradient(135deg, rgba(249, 113, 65, 0.1) 0%, rgba(255, 236, 230, 0.5) 100%);
     position: relative;
     overflow: hidden;
+    text-align: center;
 }
 
 .hero-content {
@@ -254,23 +264,51 @@ nav a:hover {
     align-items: center;
 }
 
-h1 {
-    font-size: 4.2rem;
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.title-container h1 {
+    font-size: 3.5rem;
     font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 2rem;
+    line-height: 1.1;
     color: var(--text-dark);
+    margin: 0.2rem 0;
+    width: auto;
+    display: inline-block;
+    letter-spacing: -0.5px;
+}
+
+.hero-description {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 3rem;
 }
 
 .hero-text p {
     font-size: 1.8rem;
     color: var(--text-light);
-    margin-bottom: 3rem;
-    max-width: 500px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: left;
 }
 
 .hero-image {
     position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .interface-screenshot {
@@ -281,6 +319,7 @@ h1 {
     transition: var(--transition);
     max-width: 100%;
     height: auto;
+    width: 100%;
 }
 
 .interface-screenshot:hover {
@@ -862,19 +901,31 @@ footer {
     
     .hero-text {
         text-align: center;
+        align-items: center;
+        margin-bottom: 4rem;
+    }
+    
+    .title-container {
+        align-items: center;
     }
     
     .hero-text p {
         margin-left: auto;
         margin-right: auto;
+        text-align: center;
     }
     
     .cta-buttons {
         justify-content: center;
     }
     
-    .interface-screenshot {
+    .hero-image {
         max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .interface-screenshot {
+        max-width: 100%;
         margin: 0 auto;
     }
     
@@ -942,6 +993,29 @@ footer {
     .cta-buttons {
         flex-direction: column;
         align-items: center;
+        width: 100%;
+    }
+    
+    .cta-buttons .btn {
+        width: 100%;
+        max-width: 320px;
+    }
+    
+    .benefits-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .benefit-card {
+        width: 100%;
+    }
+    
+    .hero-image {
+        max-width: 100%;
+    }
+    
+    .interface-screenshot {
+        max-width: 100%;
+        border-width: 5px;
     }
 }
 
@@ -954,17 +1028,19 @@ footer {
         padding: 12rem 0 6rem;
     }
     
-    .hero-text h1 {
-        font-size: 3.6rem;
+    .title-container h1 {
+        font-size: 3rem;
     }
     
     .cta-buttons {
-        gap: 1rem;
+        gap: 1.5rem;
+        width: 100%;
     }
     
     .btn-lg {
-        padding: 1.2rem 2.4rem;
+        padding: 1.2rem 2rem;
         font-size: 1.6rem;
+        width: 100%;
     }
     
     .section {
@@ -972,7 +1048,7 @@ footer {
     }
     
     .section-title {
-        font-size: 3rem;
+        font-size: 2.8rem;
     }
     
     .section-subtitle {
@@ -981,11 +1057,46 @@ footer {
     }
     
     .features-grid {
-        gap: 2rem;
+        gap: 2.5rem;
     }
     
     .feature-card {
         padding: 2rem;
+    }
+    
+    .hero-image {
+        width: 100%;
+        padding: 0 1rem;
+    }
+    
+    .interface-screenshot {
+        transform: none;
+        border-width: 5px;
+    }
+    
+    .interface-screenshot:hover {
+        transform: none;
+    }
+    
+    .hero-description {
+        max-width: 100%;
+    }
+    
+    .benefits-wrapper {
+        gap: 2rem;
+    }
+    
+    .benefit-card {
+        max-width: 100%;
+    }
+    
+    .benefit-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .stat-arrow {
+        transform: rotate(90deg);
     }
     
     .footer {
@@ -993,7 +1104,6 @@ footer {
     }
 }
 
-/* iPhone SE など非常に小さい画面用の追加調整 */
 @media (max-width: 375px) {
     html {
         font-size: 50%;
@@ -1003,16 +1113,22 @@ footer {
         padding: 0 1.5rem;
     }
     
-    .hero-text h1 {
-        font-size: 3.2rem;
+    .title-container h1 {
+        font-size: 2.8rem;
+    }
+    
+    .hero-description p {
+        font-size: 1.6rem;
     }
     
     .btn {
-        padding: 1rem 2rem;
+        padding: 1rem 1.8rem;
+        font-size: 1.5rem;
     }
     
     .btn-lg {
-        padding: 1.1rem 2.2rem;
+        padding: 1.1rem 2rem;
+        font-size: 1.5rem;
     }
     
     .accordion-title {
@@ -1021,5 +1137,13 @@ footer {
     
     .contact-form-container {
         padding: 2rem;
+    }
+    
+    .hero-image {
+        padding: 0;
+    }
+    
+    .interface-screenshot {
+        border-width: 3px;
     }
 }

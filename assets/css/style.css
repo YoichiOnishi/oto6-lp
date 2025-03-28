@@ -65,6 +65,7 @@ img {
     max-width: 1200px;
     padding: 0 2rem;
     margin: 0 auto;
+    box-sizing: border-box;
 }
 
 .section {
@@ -100,6 +101,7 @@ img {
     transition: var(--transition);
     border: none;
     font-size: 1.6rem;
+    white-space: nowrap;
 }
 
 .btn-primary {
@@ -188,6 +190,7 @@ nav a:hover {
     color: var(--primary);
 }
 
+/* モバイルメニュー */
 .mobile-menu-btn {
     display: none;
     background: none;

@@ -65,6 +65,52 @@ accordionItems.forEach(item => {
     });
 });
 
+// 料金プラン月払い/年払い切り替え
+document.addEventListener('DOMContentLoaded', function() {
+    const monthlyBtn = document.getElementById('monthly-btn');
+    const yearlyBtn = document.getElementById('yearly-btn');
+    const toggleSlider = document.getElementById('pricing-toggle');
+    const monthlyPrices = document.querySelectorAll('.monthly-price');
+    const yearlyPrices = document.querySelectorAll('.yearly-price');
+    
+    // トグルスライダーの初期位置を設定
+    function updateToggleSlider() {
+        if (yearlyBtn.classList.contains('active')) {
+            toggleSlider.style.left = yearlyBtn.offsetLeft + 'px';
+        } else {
+            toggleSlider.style.left = monthlyBtn.offsetLeft + 'px';
+        }
+    }
+    
+    // 初期位置を設定
+    setTimeout(updateToggleSlider, 0);
+    
+    // 月払いボタンクリック
+    monthlyBtn.addEventListener('click', function() {
+        yearlyBtn.classList.remove('active');
+        monthlyBtn.classList.add('active');
+        toggleSlider.style.left = monthlyBtn.offsetLeft + 'px';
+        
+        // 料金表示を切り替え
+        monthlyPrices.forEach(price => price.style.display = 'block');
+        yearlyPrices.forEach(price => price.style.display = 'none');
+    });
+    
+    // 年払いボタンクリック
+    yearlyBtn.addEventListener('click', function() {
+        monthlyBtn.classList.remove('active');
+        yearlyBtn.classList.add('active');
+        toggleSlider.style.left = yearlyBtn.offsetLeft + 'px';
+        
+        // 料金表示を切り替え
+        monthlyPrices.forEach(price => price.style.display = 'none');
+        yearlyPrices.forEach(price => price.style.display = 'block');
+    });
+    
+    // ウィンドウリサイズ時にトグルスライダー位置を更新
+    window.addEventListener('resize', updateToggleSlider);
+});
+
 // お問い合わせフォームのバリデーション
 const contactForm = document.getElementById('contact-form');
 
@@ -171,29 +217,10 @@ if (contactForm) {
     });
 }
 
-// 構造化データの追加
-const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "音六AI",
-    "applicationCategory": "MultimediaApplication",
-    "operatingSystem": "Web",
-    "offers": {
-        "@type": "Offer",
-        "price": "要問合せ",
-        "priceCurrency": "JPY"
-    },
-    "description": "音声尺にフィットしたナレーション作成、読み・イントネーション指定機能、多言語ナレーション対応の音声合成システム",
-    "developer": {
-        "@type": "Organization",
-        "name": "TBSメディアテクノロジー"
-    }
-};
-
-// ページロード時のアニメーション
+// ページ読み込み時の初期化
 document.addEventListener('DOMContentLoaded', () => {
     // フェードインアニメーション用の要素を取得
-    const fadeElements = document.querySelectorAll('.feature-card, .benefit-card, .case-card, .accordion-item');
+    const fadeElements = document.querySelectorAll('.feature-card, .benefit-card, .case-card, .accordion-item, .pricing-card');
     
     // Intersection Observerの設定
     const observer = new IntersectionObserver((entries) => {
@@ -212,9 +239,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// スタイルシートにアニメーション用のCSSを追加
-const style = document.createElement('style');
-style.textContent = `
+// アニメーション用のCSS
+document.head.appendChild(document.createElement('style')).textContent = `
     .fade-element {
         opacity: 0;
         transform: translateY(20px);
@@ -226,4 +252,22 @@ style.textContent = `
         transform: translateY(0);
     }
 `;
-document.head.appendChild(style);
+
+// 構造化データの追加
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "音六AI",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Web",
+    "offers": {
+        "@type": "Offer",
+        "price": "要問合せ",
+        "priceCurrency": "JPY"
+    },
+    "description": "音声尺にフィットしたナレーション作成、読み・イントネーション指定機能、多言語ナレーション対応の音声合成システム",
+    "developer": {
+        "@type": "Organization",
+        "name": "TBSメディアテクノロジー"
+    }
+};

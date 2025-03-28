@@ -544,6 +544,174 @@ nav a:hover {
     color: var(--text-light);
 }
 
+/* 料金プランセクション */
+.pricing {
+    padding: 8rem 0;
+    background-color: #ffffff;
+}
+
+.pricing-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.toggle-btn {
+    border: none;
+    background: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.6rem;
+    color: #718096;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease;
+}
+
+.toggle-btn.active {
+    color: #1a202c;
+    font-weight: 500;
+}
+
+.toggle-slider {
+    position: absolute;
+    width: 10rem;
+    height: 3.5rem;
+    background-color: #f1f5f9;
+    border-radius: 2rem;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    transition: left 0.3s ease;
+    z-index: 1;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.pricing-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    padding: 3rem 2rem;
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-card.popular {
+    border: 2px solid #f97141;
+    box-shadow: 0 8px 15px rgba(249, 113, 65, 0.1);
+    transform: translateY(-10px);
+}
+
+.pricing-card.popular:hover {
+    transform: translateY(-15px);
+}
+
+.popular-badge {
+    position: absolute;
+    top: 0;
+    right: 2rem;
+    background-color: #f97141;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    transform: translateY(-2px);
+}
+
+.pricing-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.pricing-price {
+    font-size: 3.6rem;
+    font-weight: 700;
+    color: #f97141;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.pricing-price span {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #718096;
+}
+
+.pricing-period {
+    text-align: center;
+    color: #718096;
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
+}
+
+.pricing-features {
+    list-style: none;
+    margin: 0 0 2rem;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.pricing-features li {
+    padding: 1rem 0;
+    border-bottom: 1px solid #f1f5f9;
+    color: #4a5568;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    line-height: 1.5;
+}
+
+.pricing-features li:last-child {
+    border-bottom: none;
+}
+
+.check-icon {
+    color: #10b981;
+    font-weight: bold;
+    font-size: 1.8rem;
+    flex-shrink: 0;
+}
+
+.accent {
+    color: #f97141;
+    font-weight: 500;
+}
+
+.pricing-features strong {
+    color: #f97141;
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+.feature-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
 /* デモ体験セクション */
 .demo {
     padding: 8rem 0;
@@ -946,6 +1114,23 @@ footer {
     .footer-grid {
         grid-template-columns: 1fr 1fr;
     }
+    
+    .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .pricing-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .pricing-title {
+        font-size: 2rem;
+    }
+    
+    .pricing-price {
+        font-size: 3rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1016,6 +1201,20 @@ footer {
     .interface-screenshot {
         max-width: 100%;
         border-width: 5px;
+    }
+    
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .pricing-card.popular {
+        transform: none;
+    }
+    
+    .pricing-card {
+        margin-bottom: 2rem;
     }
 }
 
@@ -1101,6 +1300,28 @@ footer {
     
     .footer {
         padding: 6rem 0 2rem;
+    }
+    
+    .toggle-btn {
+        font-size: 1.4rem;
+        padding: 0.6rem 1.2rem;
+    }
+    
+    .toggle-slider {
+        width: 9rem;
+        height: 3rem;
+    }
+    
+    .pricing-title {
+        font-size: 1.8rem;
+    }
+    
+    .pricing-price {
+        font-size: 2.8rem;
+    }
+    
+    .pricing-features li {
+        font-size: 1.4rem;
     }
 }
 
